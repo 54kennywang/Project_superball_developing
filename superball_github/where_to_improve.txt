@@ -1,0 +1,60 @@
+modify: sb-play-kenny.cpp
+
+have not taken into consideration of different color worth different points
+points system is not good enough
+int distance  is not used, should use it to improve board_evaluation(vector<int>&temp_board)
+figure why SWAP for the beginning feature won't work
+work on when to use swap() and score() in next()
+bring how many more benefits 3/4/5 (4/5 is better)
+less than 15/10 cells, score instantly (10 is better)
+
+####################################################################################################################################################################
+all functions:
+void next(): call analyze() to get all scoring blocks, if no, can only swap; otherwise can swap or score, if empty less than 10/15 then score instantly, else, think about if worth it to swap before score: call about_to_score and pass it to swap_bring_benefit, if bring enough benefit, swap, otherwise swap
+
+(edit board_evaluation function)
+double board_evaluation(vector<int>&temp_board): pass in the board to be assessed, use check_around to make all the block sets of this board, use a vector <tuple<int, int, int>> to represent (root, size, goal_cell). ##points based on aiming to score the largest block and the remaining sets (including single cells) as few as possible##
+
+void score(vector<tuple<int, int>>& scorevec) pass in the ready to score blocks and choose the largest block to score
+
+tuple<int, int> about_to_score(vector<tuple<int, int>>& scorevec) pass in all ready-to-score pairs, return the largest block size of ready_to_score (cell index, block_size)
+
+tuple<int, int> swap_bring_benefit(tuple<int, int>index_size) pass in the one ready_to_scoring (index, size) , use benefit_check. return (x, y)  (swaping index) if there is a better swap before scoring or (-1, -1)
+
+tuple<int, int> benefit_check(vector<int>&temp_board, tuple<int, int>index_size) pass in to_be_evaluated board and (socring_index, scoring_block_size). return (1, better_scoring_block_size) or (-1, -1)
+
+void swap(double original_points) pass in the original board score and return SWAP instruction based on point evaluation
+
+(not being used)
+int Superball::distance(int i, int j) imagine the real 8*10 board, pass in the index of two cells in a vector and return their distance: if adjacent, distance is 0, if vertex to vertex, distance is 1
+
+vector<tuple<int, int>> Superball::analyze() return a vector of ready-to-score pairs (scoring_index, scoring_size)
+
+void Superball::check_around(int index, vector<int>& check_board, DisjointSet *pointer) pass in the index of which entry is being checked on check_board, connect corresponding sets of disjointset
+
+
+///////////////////////basic ideas///////////////////////////////////
+swap: (after swap)
+(just start) same col total distance apart smaller
+
+pay special attention on large block (10) without a goal piece, make it scorable and score instantly
+
+1 never swap same color 
+
+2 if already connected curvedly, dont make it connected smoothly bc it connected anyways
+
+3 make two blocks at the same time
+
+4 have more connected block and block at least one piece on goal (higher col piece on goal with block)
+
+score:
+multiple can score, highest value better(trade-off free blocks or care scores) i care free bricks
+
+dead end of scoring block: seperate by a diff col is better than corner to corner
+
+1 no same col around the ready-to-score dead end, then score
+
+2 empty less than 9, score now
+
+3 worth it to score now or perform another swap(s): swap bring 3 or more connected pieces
+

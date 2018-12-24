@@ -1,0 +1,30 @@
+modify: sb-play-kenny.cpp
+compile: sb-play-kenny disjoint_by_size.cpp sb-play-kenny.cpp
+__________________________________________________________________________________
+use shell script to evaluate:
+
+in my UTK directory, run:
+sh run_multiple.sh 8 10 5 pbyrg /home/qwang46/cs302/THIS/Labs/Lab5/sb-play-kenny 10 0
+
+on my windows pc:
+sh run_multiple.sh 8 10 5 pbyrg /mnt/f/cs302/THIS/Labs/Lab5/sb-play-kenny 10 0
+___________________________________________________________________________________
+to play the game step by step, run:
+
+on my windows pc:
+./sb-player 8 10 5 pbyrg ./sb-play-kenny y y -
+
+in my UTK directory, run:
+/home/plank/cs302/Labs/Lab5/sb-player 8 10 5 pbyrg /home/qwang46/cs302/THIS/Labs/Lab5/sb-play-kenny y y -
+____________________________________________________________________________________
+compare mine with Dr. Plank's:
+
+in my UTK directory, run:
+/home/plank/cs302/Labs/Lab5/sb-player 8 10 5 pbyrg /home/qwang46/cs302/THIS/Labs/Lab5/sb-play2 y y -
+				OR
+/home/plank/cs302/Labs/Lab5/sb-player 8 10 5 pbyrg /home/qwang46/cs302/THIS/Labs/Lab5/sb-play3 y y -
+
+on my windows pc:
+./sb-player 8 10 5 pbyrg ./sb-play2 y y -
+		OR
+./sb-player 8 10 5 pbyrg ./sb-play3 y y -
