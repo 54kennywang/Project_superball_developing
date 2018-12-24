@@ -15,4 +15,6 @@ see CS302 -- Lab 5 -- Superball!.pdf for specific instructions;
 
 written shellscript (run_multiple.sh) is to score my program;
 
+Superball.jar is the game exectuable;
+
 best on record is 31,814.13 on average 100 runs.
